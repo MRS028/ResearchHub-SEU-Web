@@ -1,22 +1,23 @@
-import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
-import { Button } from '@/components/ui/button';
-import { Sheet, SheetContent, SheetTrigger } from '@/components/ui/sheet';
-import { Menu, X, Sun, Moon } from 'lucide-react';
+import React, { useState } from "react";
+import { Link } from "react-router-dom";
+import { Button } from "@/components/ui/button";
+import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
+import { Menu, X, Sun, Moon } from "lucide-react";
 
 interface NavbarProps {
-  currentTheme: 'light' | 'dark';
+  currentTheme: "light" | "dark";
   toggleTheme: () => void;
 }
 
 const Navbar: React.FC<NavbarProps> = ({ currentTheme, toggleTheme }) => {
-  const [active, setActive] = useState('/');
+  const [active, setActive] = useState("/");
 
   const navLinks = [
-    { name: 'Home', path: '/' },
-    { name: 'Dashboard', path: '/dashboard' },
-    { name: 'Researches', path: '/research' },
-    { name: 'Bookmarks', path: '/bookmarks' },
+    { name: "Home", path: "/" },
+    { name: "Dashboard", path: "/dashboard" },
+    { name: "Researches", path: "/research" },
+    { name: "Bookmarks", path: "/bookmarks" },
+    { name: "Bookmarks", path: "/bookmarks" },
   ];
 
   return (
@@ -27,7 +28,7 @@ const Navbar: React.FC<NavbarProps> = ({ currentTheme, toggleTheme }) => {
           <Link
             to="/"
             className="flex items-center gap-2 text-2xl font-bold text-blue-600 dark:text-blue-400"
-            onClick={() => setActive('/')}
+            onClick={() => setActive("/")}
           >
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -54,8 +55,8 @@ const Navbar: React.FC<NavbarProps> = ({ currentTheme, toggleTheme }) => {
                 onClick={() => setActive(link.path)}
                 className={`px-3 py-2 rounded-md text-sm font-medium transition-colors ${
                   active === link.path
-                    ? 'bg-blue-50 text-blue-600 dark:bg-blue-900/40 dark:text-blue-400'
-                    : 'text-gray-700 hover:bg-gray-100 hover:text-gray-900 dark:text-gray-300 dark:hover:bg-gray-800 dark:hover:text-white'
+                    ? "bg-blue-50 text-blue-600 dark:bg-blue-900/40 dark:text-blue-400"
+                    : "text-gray-700 hover:bg-gray-100 hover:text-gray-900 dark:text-gray-300 dark:hover:bg-gray-800 dark:hover:text-white"
                 }`}
               >
                 {link.name}
@@ -66,16 +67,28 @@ const Navbar: React.FC<NavbarProps> = ({ currentTheme, toggleTheme }) => {
 
             {/* Dark/Light Mode Toggle */}
             <Button variant="ghost" size="icon" onClick={toggleTheme}>
-              {currentTheme === 'dark' ? <Sun className="h-5 w-5" /> : <Moon className="h-5 w-5" />}
+              {currentTheme === "dark" ? (
+                <Sun className="h-5 w-5" />
+              ) : (
+                <Moon className="h-5 w-5" />
+              )}
             </Button>
 
             {/* Auth Buttons */}
-            <Button variant="outline" size="sm">
-              Login
-            </Button>
-            <Button variant="default" size="sm">
-              Sign Up
-            </Button>
+            <Link to={"/login"}>
+              <Button
+                variant="outline"
+                size="sm"
+                className="hover:cursor-pointer"
+              >
+                Login
+              </Button>
+            </Link>
+            <Link to={"/signup"}>
+              <Button size="sm" className="hover:cursor-pointer">
+                Sign Up
+              </Button>
+            </Link>
           </nav>
 
           {/* Mobile Menu */}
@@ -90,7 +103,7 @@ const Navbar: React.FC<NavbarProps> = ({ currentTheme, toggleTheme }) => {
                 <div className="flex justify-between items-center mb-6">
                   <Link
                     to="/"
-                    onClick={() => setActive('/')}
+                    onClick={() => setActive("/")}
                     className="flex items-center gap-2 text-lg font-bold text-blue-600 dark:text-blue-400"
                   >
                     <svg
@@ -108,9 +121,9 @@ const Navbar: React.FC<NavbarProps> = ({ currentTheme, toggleTheme }) => {
                     </svg>
                     ResearchHub
                   </Link>
-                  <Button variant="ghost" size="icon">
+                  {/* <Button variant="ghost" size="icon">
                     <X className="h-6 w-6" />
-                  </Button>
+                  </Button> */}
                 </div>
 
                 <nav className="flex flex-col space-y-2">
@@ -118,11 +131,14 @@ const Navbar: React.FC<NavbarProps> = ({ currentTheme, toggleTheme }) => {
                     <Link
                       key={link.name}
                       to={link.path}
-                      onClick={() => setActive(link.path)}
+                      onClick={() => setActive(link.path)
+                      
+                      }
+                      
                       className={`block px-4 py-2 rounded-md text-base font-medium transition-colors ${
                         active === link.path
-                          ? 'bg-blue-50 text-blue-600 dark:bg-blue-900/40 dark:text-blue-400'
-                          : 'text-gray-700 hover:bg-gray-100 hover:text-gray-900 dark:text-gray-300 dark:hover:bg-gray-800 dark:hover:text-white'
+                          ? "bg-blue-50 text-blue-600 dark:bg-blue-900/40 dark:text-blue-400"
+                          : "text-gray-700 hover:bg-gray-100 hover:text-gray-900 dark:text-gray-300 dark:hover:bg-gray-800 dark:hover:text-white"
                       }`}
                     >
                       {link.name}
@@ -130,15 +146,30 @@ const Navbar: React.FC<NavbarProps> = ({ currentTheme, toggleTheme }) => {
                   ))}
 
                   <div className="pt-4 mt-4 border-t border-gray-200 dark:border-gray-700 flex flex-col space-y-2">
-                    <Button variant="ghost" size="icon" onClick={toggleTheme} className="w-full">
-                      {currentTheme === 'dark' ? '🌞 Light Mode' : '🌙 Dark Mode'}
+                    <Button
+                      variant="ghost"
+                      size="icon"
+                      onClick={toggleTheme}
+                      className="w-full"
+                    >
+                      {currentTheme === "dark"
+                        ? "🌞 Light Mode"
+                        : "🌙 Dark Mode"}
                     </Button>
-                    <Button variant="outline" className="w-full">
-                      Login
-                    </Button>
-                    <Button variant="default" className="w-full">
-                      Sign Up
-                    </Button>
+                    <Link to={"/login"}>
+                      <Button
+                        variant="outline"
+                        
+                        className="hover:cursor-pointer w-full"
+                      >
+                        Login
+                      </Button>
+                    </Link>
+                    <Link to={"/signup"}>
+                      <Button className="hover:cursor-pointer w-full">
+                        Sign Up
+                      </Button>
+                    </Link>
                   </div>
                 </nav>
               </SheetContent>
