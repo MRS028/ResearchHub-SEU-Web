@@ -4,6 +4,7 @@ import Home from "@/pages/Home/Home"
 import Dashbooard from "@/pages/Home/Dashbooard"
 import Login from "@/pages/Auth/Login"
 import Signup from "@/pages/Auth/Signup"
+import Research from "@/features/Research"
 
 
 const AppRoutes = () => {
@@ -17,6 +18,7 @@ const AppRoutes = () => {
       <Route element={<MainLayout />}>
         <Route path="/" element={<Home />} />
         <Route path="/dashboard" element={<Dashbooard />} />
+        <Route path="/research" element={<Research />} />
       </Route>
     </Routes>
   )

@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
-import { Menu, X, Sun, Moon } from "lucide-react";
+import { Menu,  Sun, Moon } from "lucide-react";
 
 interface NavbarProps {
   currentTheme: "light" | "dark";
